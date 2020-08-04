@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import volodymyr.dao.UserRepo;
+import volodymyr.repository.UserRepo;
 import volodymyr.domain.User;
 import volodymyr.domain.UserRole;
 
@@ -21,5 +21,9 @@ public class UserService {
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		user.setRole(UserRole.ROLE_USER);
 		userRepo.save(user);
+	}
+
+	public User findByEmail(String email) {
+		return userRepo.findByEmail(email).get();
 	}
 }

@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import volodymyr.dao.UserRepo;
+import volodymyr.repository.UserRepo;
 import volodymyr.domain.User;
 
 @Service("customUserDetailsService")
