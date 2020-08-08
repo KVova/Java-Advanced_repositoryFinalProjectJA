@@ -25,8 +25,7 @@ public class Faculty {
 	@ElementCollection
 	private List<Subject> subjects;
 
-	public Faculty() {
-	}
+	public Faculty() {}
 
 	public Faculty(FacultyName name, int numberOfStudents, List<Subject> subjects) {
 		this.name = name;
@@ -77,10 +76,7 @@ public class Faculty {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + numberOfStudents;
-		result = prime * result + ((subjects == null) ? 0 : subjects.hashCode());
 		return result;
 	}
 
