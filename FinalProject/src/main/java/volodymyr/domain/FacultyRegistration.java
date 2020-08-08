@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Base64;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -37,6 +38,9 @@ public class FacultyRegistration {
 	@ElementCollection
 	private List<Integer> marks;
 
+	@Column(name = "sum_of_marks")
+	private Integer sumOfMarks;
+	
 	@Transient
 	private int facultyId;
 
@@ -51,6 +55,9 @@ public class FacultyRegistration {
 		this.user = user;
 		this.base64 = Base64.getEncoder().encodeToString(file.getBytes());
 		this.marks = marks;
+		this.sumOfMarks = 0;
+		for (int mark : this.marks) 
+			sumOfMarks +=mark;
 	}
 
 	public FacultyRegistration(Integer id, Faculty faculty, User user, List<Integer> marks, MultipartFile file) throws IOException {
@@ -59,6 +66,9 @@ public class FacultyRegistration {
 		this.user = user;
 		this.base64 = Base64.getEncoder().encodeToString(file.getBytes());
 		this.marks = marks;
+		this.sumOfMarks = 0;
+		for (int mark : this.marks) 
+			sumOfMarks +=mark;
 	}
 
 	public Integer getId() {
@@ -95,6 +105,10 @@ public class FacultyRegistration {
 
 	public List<Integer> getMarks() {
 		return marks;
+	}
+	
+	public Integer getSumOfMarks() {
+		return sumOfMarks;
 	}
 
 	public void setMarks(List<Integer> marks) {
