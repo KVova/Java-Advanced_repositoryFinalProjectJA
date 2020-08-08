@@ -41,6 +41,7 @@
 					<th>Faculty</th>
 					<th>First name</th>
 					<th>Last name</th>
+					<th>Entrant photo</th>
 					<th>Email</th>
 					<th>Marks</th>
 				</tr>
@@ -52,6 +53,7 @@
 						<td>${currentRegistration.faculty.name}</td>
 						<td>${currentRegistration.user.name}</td>
 						<td>${currentRegistration.user.surname}</td>
+						<td><img src="data:image/png;base64,${currentRegistration.base64}" width="100" height="70"/></td>
 						<td>${currentRegistration.user.email}</td>
 						<td>${currentRegistration.faculty.subjects}<br>${currentRegistration.marks}</td>
 					</tr>

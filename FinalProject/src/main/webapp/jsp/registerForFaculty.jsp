@@ -29,27 +29,29 @@
 
 		<div class="w3-container">
 
-			<form:form method="POST" action="${contextPath}/register-for-faculty"
-				modelAttribute="facultyRegistration">
+			<form:form method="POST" action="${contextPath}/register-for-faculty" enctype="multipart/form-data">
 				<table>
 					<tr>
-						<th>To register for the faculty you have to fill marks from
+						<th>To register for the faculty you have to upload your photo and to fill marks from
 							such subjects:</th>
+					</tr>
+					
+					<tr>
+						<td>Upload you photo</td>
+						<td><input  type="file" name="image"/></td>
 					</tr>
 
 					<c:forEach items="${facultyRegistration.faculty.subjects}"
 						var="currentSubject">
 						<tr>
-							<td><form:label path="marks">${currentSubjects}</form:label></td>
-							<td><form:input path="marks" /></td>
+							<td>${currentSubject}</td>
+							<td><input type="number" name="marks"/></td>
 						</tr>
 					</c:forEach>
 
 					<tr>
-						<td><form:input type="hidden" path="facultyId"
-								value="${facultyRegistration.faculty.id}" /></td>
-						<td><form:input type="hidden" path="email"
-								value="${facultyRegistration.user.email}" /></td>
+						<td><input  type="hidden"  name="facultyId" value="${facultyRegistration.faculty.id}"/></td>
+						<td><input  type="hidden" name="email" value="${facultyRegistration.user.email}"/></td>
 					</tr>
 					<tr>
 						<td><input type="submit" value="Register" /></td>
