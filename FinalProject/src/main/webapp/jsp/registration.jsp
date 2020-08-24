@@ -18,7 +18,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Create an account</title>
+    <title><spring:message code="registration.title"/></title>
 
     <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
     <link href="${contextPath}/resources/css/common.css" rel="stylesheet">
@@ -26,51 +26,170 @@
 <body>
 <div class="container">
 
-    <form:form method="POST" modelAttribute="userForm" class="form-signin">
-        <h2 class="form-signin-heading">Create your account</h2>
-        
-        <spring:bind path="name">
-            <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="text" path="name" class="form-control" placeholder="First name"
-                            autofocus="true"></form:input>
-                <form:errors path="name"></form:errors>
-            </div>
-        </spring:bind>
-        
-          <spring:bind path="surname">
-            <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="text" path="surname" class="form-control" placeholder="Last name"
-                            autofocus="true"></form:input>
-                <form:errors path="surname"></form:errors>
-            </div>
-        </spring:bind>
-        
-        
-        <spring:bind path="email">
-            <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="text" path="email" class="form-control" placeholder="Email"
-                            autofocus="true"></form:input>
-                <form:errors path="email"></form:errors>
-            </div>
-        </spring:bind>
+    <form:form method="POST" modelAttribute="userForm" class="form-horizontal" role="form" action="/registration">
+	
+				<div class="row">
+					<div class="col-md-3"></div>
+					<div class="col-md-6">
+						<h2>
+							<spring:message code="registration.title.2"/>
+						</h2>
+						<hr>
+					</div>
+				</div>
 
-        <spring:bind path="password">
-            <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="password" path="password" class="form-control" placeholder="Password"></form:input>
-                <form:errors path="password"></form:errors>
-            </div>
-        </spring:bind>
+			<spring:bind path="name">
 
-   <spring:bind path="passwordConfirm">
-            <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="password" path="passwordConfirm" class="form-control"
-                            placeholder="Confirm your password"></form:input>
-                <form:errors path="passwordConfirm"></form:errors>
-            </div>
-        </spring:bind> 
+				<spring:message code="registration.name" var="name"/>
 
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
-    </form:form>
+				<div class="row">
+					<div class="col-md-3 field-label-responsive">
+						<label for="name">${name}</label>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<div class="input-group mb-2 mr-sm-2 mb-sm-0">
+								<div class="input-group-addon" style="width: 2.6rem">
+									<i class="fa fa-user"></i>
+								</div>
+								<form:input type="text" path="name" name="name"
+									class="form-control" id="name" autofocus="true"
+									placeholder="${name}"></form:input>
+								<form:errors path="name"></form:errors>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="form-control-feedback">
+							<span class="text-danger align-middle">
+							</span>
+						</div>
+					</div>
+				</div>
+			</spring:bind>
+
+			<spring:bind path="surname">
+			
+				<spring:message code="registration.surname" var="surname"/>
+				
+					<div class="row">
+						<div class="col-md-3 field-label-responsive">
+							<label for="surname">${surname}</label>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<div class="input-group mb-2 mr-sm-2 mb-sm-0">
+									<div class="input-group-addon" style="width: 2.6rem">
+										<i class="fa fa-user"></i>
+									</div>
+									<form:input type="text" path="surname" name="surname"
+										class="form-control" id="surname" placeholder="${surname}"></form:input>
+									<form:errors path="surname"></form:errors>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="form-control-feedback">
+								<span class="text-danger align-middle"> <!-- Put name validation error messages here -->
+								</span>
+							</div>
+						</div>
+					</div>
+				</spring:bind>
+	
+				<spring:bind path="email">
+				
+					<spring:message code="registration.email.placeholder" var="email"/>
+					
+					<div class="row">
+						<div class="col-md-3 field-label-responsive">
+							<label for="email"><spring:message code="registration.email"/></label>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<div class="input-group mb-2 mr-sm-2 mb-sm-0">
+									<div class="input-group-addon" style="width: 2.6rem">
+										<i class="fa fa-at"></i>
+									</div>
+									<form:input type="text" path="email" name="email"
+										class="form-control" id="email" placeholder="${email}"></form:input>
+									<form:errors path="email"></form:errors>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="form-control-feedback">
+								<span class="text-danger align-middle"> <!-- Put e-mail validation error messages here -->
+								</span>
+							</div>
+						</div>
+					</div>
+				</spring:bind>
+	
+				<spring:bind path="password">
+				
+					<spring:message code="registration.password" var="password"/>
+					
+					<div class="row">
+						<div class="col-md-3 field-label-responsive">
+							<label for="password">${password}</label>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group has-danger">
+								<div class="input-group mb-2 mr-sm-2 mb-sm-0">
+									<div class="input-group-addon" style="width: 2.6rem">
+										<i class="fa fa-key"></i>
+									</div>
+									<form:input type="password" path="password" name="password"
+										class="form-control" id="password" placeholder="${password}"></form:input>
+									<form:errors path="password"></form:errors>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="form-control-feedback">
+								<span class="text-danger align-middle"> 
+								<!-- <i class="fa fa-close"> </i> -->
+								</span>
+							</div>
+						</div>
+					</div>
+				</spring:bind>
+
+			<spring:bind path="passwordConfirm">
+			
+				<spring:message code="registration.passwordConfirm" var="passwordConfirm"/>
+				
+				<div class="row">
+					<div class="col-md-3 field-label-responsive">
+						<label for="password-confirmation">${passwordConfirm}</label>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<div class="input-group mb-2 mr-sm-2 mb-sm-0">
+								<div class="input-group-addon" style="width: 2.6rem">
+									<i class="fa fa-repeat"></i>
+								</div>
+								<form:input type="password" path="passwordConfirm"
+									name="password-confirmation" class="form-control"
+									id="password-confirm" placeholder="${passwordConfirm}"></form:input>
+								<form:errors path="passwordConfirm"></form:errors>
+							</div>
+						</div>
+					</div>
+				</div>
+			</spring:bind>
+
+			<div class="row">
+					<div class="col-md-3"></div>
+					<div class="col-md-6">
+						<button type="submit" class="btn btn-success">
+							<i class="fa fa-user-plus"></i> <spring:message code="registration.register"/>
+						</button>
+					</div>
+				</div>
+	
+	    </form:form>
 
 </div>
 <!-- /container -->

@@ -1,23 +1,15 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
-
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<meta name="description" content="">
-<meta name="author" content="">
 
-<title>Welcome!</title>
+<title><spring:message code="home.title"/></title>
 
 <link rel="stylesheet"
 	href="${contextPath}/resources/css/bootstrap.min.css">
@@ -26,15 +18,15 @@
 <body>
 	<!-- Sidebar -->
 	<div class="w3-sidebar w3-light-grey w3-bar-block" style="width: 10%">
-		<h3 class="w3-bar-item">Menu</h3>
-		<a href="/home" class="w3-bar-item w3-button">Home</a> 
-		<a href="/show-entrants" class="w3-bar-item w3-button">Show all entrants</a>
+		<h3 class="w3-bar-item"><spring:message code="sidebar.menu"/></h3>
+		<a href="/home" class="w3-bar-item w3-button"><spring:message code="sidebar.home"/></a> 
+		<a href="/show-entrants" class="w3-bar-item w3-button"><spring:message code="sidebar.showAll"/></a>
 	</div>
 
 	<!-- Page Content -->
 	<div style="margin-left: 10%">
 		<div class="w3-container w3-teal">
-			<h1>Faculties</h1>
+			<h1><spring:message code="home.heading"/></h1>
 		</div>
 
 		<div class="w3-container">
@@ -47,7 +39,7 @@
 
 				<h2>
 					Welcome ${pageContext.request.userPrincipal.name} | <a
-						onclick="document.forms['logoutForm'].submit()">Logout</a>
+						onclick="document.forms['logoutForm'].submit()"><spring:message code="home.logout"/></a>
 				</h2>
 
 			</c:if>
@@ -61,18 +53,18 @@
 								alt="Faculty logo" style="width: 100%">
 							<div class="w3-container w3-center">
 								<h3>${currentFaculty.name}</h3>
-								<p>Number of students recruited:
+								<p><spring:message code="home.studentsLimit"/>:
 									${currentFaculty.numberOfStudents}</p>
-								<p>Necessary subjects for entry: ${currentFaculty.subjects}</p>
+								<p><spring:message code="home.subjects"/>: ${currentFaculty.subjects}</p>
 							</div>
 							<security:authorize access="hasRole('ROLE_USER')">
 							<a class="w3-button w3-block w3-dark-grey"
 								href="${contextPath}/register-for-faculty?facultyId=${currentFaculty.id}&email=${pageContext.request.userPrincipal.name}">
-								Register for the faculty</a>
+							<spring:message code="home.register"/></a>
 							</security:authorize>
 							<a class="w3-button w3-block w3-dark-grey"
 								href="${contextPath}/show-enrolled-entrants?facultyId=${currentFaculty.id}">
-								Show enrolled entrants</a>
+								<spring:message code="home.showEntrants"/></a>
 
 						</div>
 

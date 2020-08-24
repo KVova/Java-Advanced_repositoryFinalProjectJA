@@ -8,7 +8,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Enrolled students</title>
+<title><spring:message code="enrolledEntrants.title"/></title>
 <link rel="stylesheet" href="${contextPath}/resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -19,32 +19,32 @@
 <body>
 	<!-- Sidebar -->
 	<div class="w3-sidebar w3-light-grey w3-bar-block" style="width: 10%">
-		<h3 class="w3-bar-item">Menu</h3>
-		<a href="/home" class="w3-bar-item w3-button">Home</a> 
-		<a href="/show-entrants" class="w3-bar-item w3-button">Show all entrants</a>
+		<h3 class="w3-bar-item"><spring:message code="sidebar.menu"/></h3>
+		<a href="/home"	class="w3-bar-item w3-button"><spring:message code="sidebar.home"/></a> 
+		<a href="/show-entrants" class="w3-bar-item w3-button"><spring:message code="sidebar.showAll"/></a> 
 	</div>
 
 	<!-- Page Content -->
 	<div class="container mt-3" style="margin-left: 10%">
 		<div class="w3-container w3-teal">
-			<h1>Enrolled students for ${faculty.name} faculty</h1>
-			<h2>Students limit ${faculty.numberOfStudents}</h2>
-			<h2>Registered entrants ${numberOfEntrants}</h2>
+			<h1><spring:message code="enrolledEntrants.info"/>: ${faculty.name}</h1>
+			<h2><spring:message code="enrolledEntrants.limit"/> ${faculty.numberOfStudents}</h2>
+			<h2><spring:message code="enrolledEntrants.registered"/> ${numberOfEntrants}</h2>
 		</div>
 
 		<input class="form-control" id="myInput" type="text"
-			placeholder="Search.."> <br>
+			placeholder="<spring:message code="enrolledEntrants.search"/>.."> <br>
 		<table class="table table-bordered">
 			<thead>
 				<tr>
-					<th>Entrant photo</th>
-					<th>Entrant first name</th>
-					<th>Entrant last name</th>
-					<th>Entrant email</th>
+					<th><spring:message code="enrolledEntrants.photo"/></th>
+					<th><spring:message code="enrolledEntrants.name"/></th>
+					<th><spring:message code="enrolledEntrants.surname"/></th>
+					<th><spring:message code="enrolledEntrants.email"/></th>
 					<c:forEach items="${faculty.subjects}" var="currentSubject">
 						<th>${currentSubject}</th>
 					</c:forEach>
-					<th>Total</th>
+					<th><spring:message code="enrolledEntrants.total"/></th>
 				</tr>
 			</thead>
 			<tbody id="myTable">
