@@ -34,9 +34,9 @@
 
 		<input class="form-control" id="myInput" type="text"
 			placeholder="<spring:message code="enrolledEntrants.search"/>.."> <br>
-		<table class="table table-bordered">
+		<table class="table table-bordered" style="background-color: aliceblue; font-family: sans-serif;">
 			<thead>
-				<tr>
+				<tr style="font-size: 16px;">
 					<th><spring:message code="enrolledEntrants.photo"/></th>
 					<th><spring:message code="enrolledEntrants.name"/></th>
 					<th><spring:message code="enrolledEntrants.surname"/></th>

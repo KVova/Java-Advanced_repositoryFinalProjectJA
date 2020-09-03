@@ -1,12 +1,12 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title><spring:message code="registerForFaculty.title"/></title>
 <link rel="stylesheet"
 	href="${contextPath}/resources/css/bootstrap.min.css">
@@ -29,8 +29,8 @@
 		<div class="w3-container">
 
 			<form:form method="POST" action="${contextPath}/register-for-faculty" enctype="multipart/form-data">
-				<table>
-					<tr>
+				<table style="margin: 20px; padding: 10px; background-color: aliceblue; font-size: 16px; align-content: center;">
+					<tr style="">
 						<th><spring:message code="registerForFaculty.heading"/>:</th>
 					</tr>
 					
@@ -52,7 +52,7 @@
 						<td><input  type="hidden" name="email" value="${facultyRegistration.user.email}"/></td>
 					</tr>
 					<tr>
-						<td><input type="submit" value="<spring:message code="registerForFaculty.register"/>"/></td>
+						<td><input style="margin-top: 20px; position: relative; left: 135%;" type="submit" value="<spring:message code="registerForFaculty.register"/>"/></td>
 					</tr>
 
 				</table>
